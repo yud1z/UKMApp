@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Login extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -22,7 +22,7 @@ class Home extends CI_Controller {
     $this->load->library('themer');
     $this->load->library('template');
     $data['isi'] = "";
-    $data['isi'] .= $this->themer->theme_loader("home", "depan", "");
+    $data['isi'] .= $this->themer->theme_loader("login", "depan", "");
     $this->template->load('template/template', $data);
 	}
 }
