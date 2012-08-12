@@ -21,6 +21,9 @@ class Home extends CI_Controller {
 	{
     $this->load->library('themer');
     $this->load->library('template');
+    $this->load->library('user');
+    $this->user->setUsername("keren");
+      echo $this->user->getUsername();
     $data['isi'] = "";
     $data['isi'] .= $this->themer->theme_loader("home", "depan", "");
     $this->template->load('template/template', $data);
