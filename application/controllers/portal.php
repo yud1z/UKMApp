@@ -19,10 +19,10 @@ class Portal extends CI_Controller {
 	 */
 	public function index()
 	{
-    $this->load->library('themer');
+    $this->load->library('lib_themer');
     $this->load->library('template');
     $data['isi'] = "";
-    $data['isi'] .= $this->themer->theme_loader("portal", "depan", "");
+    $data['isi'] .= $this->lib_themer->theme_loader("portal", "depan", "");
     $this->template->load('template/template', $data);
 	}
 }

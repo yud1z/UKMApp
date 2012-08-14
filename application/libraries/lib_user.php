@@ -7,7 +7,7 @@
  * setter and getter for all user method
  */
 
-class User{
+class Lib_user{
   /**
    *  setter untuk id aliasnya uid
    */

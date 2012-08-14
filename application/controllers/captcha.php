@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Captcha extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -19,11 +19,9 @@ class Login extends CI_Controller {
 	 */
 	public function index()
 	{
-    $this->load->library('lib_themer');
-    $this->load->library('template');
-    $data['isi'] = "";
-    $data['isi'] .= $this->lib_themer->theme_loader("login", "depan", "");
-    $this->template->load('template/template', $data);
+    $this->load->library('lib_captcha');
+    $this->lib_captcha->getSetPage();
+    $this->lib_captcha->getCaptcha();
 	}
 }
 

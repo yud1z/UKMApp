@@ -1,5 +1,13 @@
 <?php
 
+$css = "";
+$css .= $this->lib_ui->loadCss("style.css","screen, projection");
+$css .= $this->lib_ui->loadCss("blueprint/screen.css","screen, projection");
+$css .= $this->lib_ui->loadCss("blueprint/print.css","print");
+$css .= $this->lib_ui->loadCss("blueprint/plugins/fancy-type/screen.css","screen, projection");
+$js = "";
+$js .= $this->lib_ui->loadJs("jquery-1.8.0.min.js");
+
 
 $menu_tah = array(
   'home' => '/',
@@ -24,7 +32,9 @@ $menu .= "</ul>";
 $masuk = array(
   $isi,
   $menu,
+  $css,
+  $js,
 );
-echo $this->themer->theme_loader("template", "page", $masuk);
+echo $this->lib_themer->theme_loader("template", "page", $masuk);
 
 ?>

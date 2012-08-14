@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 define('__ROOT__', dirname(__FILE__)); 
 
-class Themer{
+class Lib_themer{
 
 function theme_loader($tipe_halaman, $nama_file, $variable)
 {
