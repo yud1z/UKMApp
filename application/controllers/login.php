@@ -21,6 +21,7 @@ class Login extends CI_Controller {
 	{
     $this->load->library('lib_themer');
     $this->load->library('template');
+    $this->load->library('lib_ui');
     $data['isi'] = "";
     $data['isi'] .= $this->lib_themer->theme_loader("login", "depan", "");
     $this->template->load('template/template', $data);

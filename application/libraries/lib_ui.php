@@ -75,7 +75,7 @@ class Lib_ui
   {
     if ($tipe == "submit") {
       return "
-          <button class='button positive' onclick='return false' id='$id'>
+          <button class='button positive' id='$id'>
           <img src='/files/library/css/blueprint/plugins/link-icons/icons/im.png' alt=''> Register
           </button>
 
@@ -89,15 +89,32 @@ class Lib_ui
     }
   }
 
-  public function addField($judul, $isi, $id, $class, $width, $class_parent)
+  public function addField($judul, $isi, $id, $class, $width)
   {
     return "
-          <form class='$class_parent' method='get' accept-charset='utf-8'>
           <fieldset id='$id' class='$class' style='width:$width'>
           <legend><b>$judul</b></legend>
             $isi
           </fieldset>
+      ";
+  }
+
+  public function form($isi, $arah, $method, $class, $id)
+  {
+    return "
+           <form class='$class' action='$arah' method='$method' id='$id' accept-charset='utf-8'>
+            $isi
           </form>
+      ";
+  }
+
+  public function error($element_form)
+  {
+    return "
+      <div class='error'>
+      Error in submiting $element_form.try again
+        </div>
+      
       ";
   }
 

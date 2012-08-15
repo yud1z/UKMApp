@@ -59,6 +59,7 @@ class Register extends CI_Controller {
       $this->lib_ui->addButton("submit", "element", "submit_register")
     );
 
+    $element = $this->lib_ui->form($element, "/register/ajax", "post", "inline", "");
     $element = $this->lib_ui->addField("Register User", $element, "User_Registration", "tengah", "300px", "inline");
 
     $data['isi'] = "";
