@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+require_once('MysqlDb.php');
+
 /**
  * @file
  * class user core untuk social network.
@@ -358,6 +360,44 @@ class Lib_user{
     return $this->ip_address;
   }
 
-
+/**
+ *  fungsi untuk add user(register user)
+ *  @param 
+ *    $username, $perusahaan, $password, $email
+ */
+  function AddUser()
+  {
+    $Db = new MysqlDb();    
+    $adduser = array(
+      'username'    => $this->username,
+      'email'       => $this->email,
+      'password'    => $this->password,
+      'waktu'       => time(),
+      'ip_address'  => $_SERVER['REMOTE_ADDR']
+    );
+    $adduser = $Db->insert('user', $adduser);
+    unset($Db);
+    $Db = new MysqlDb();    
+    $firm = array(
+      'uid'           => $adduser,
+      'perusahaan'    => $this->perusahaan,
+    );
+    $firm = $Db->insert('step1', $firm);
+    return $adduser;
+  }
+/**
+ *  fungsi untuk enkripsi password
+ *  @param $pasword plain text
+ *  @return password yang sudah dihash
+ */
+  function EnkripPassword()
+  {
+    //mulai enkripsi
+    //menggunakan phppass
+    require 'PasswordHash.php';
+    $t_hasher   = new PasswordHash(8, FALSE);
+    $hash       = $t_hasher->HashPassword($this->password);
+    return $this->password = $hash;
+  }
 
 }

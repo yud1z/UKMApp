@@ -8,9 +8,15 @@
 class Lib_ui
 {
 
+  public $element = array();
+
+
+
   public function loadJs($file)
   {
-    return "<script type='text/javascript' src='/files/library/js/$file'></script>";
+    return "
+      <script type='text/javascript' src='/files/library/js/$file'></script>
+    ";
   }
 
   public function loadCss($file,$tipe)
@@ -71,12 +77,12 @@ class Lib_ui
       ";
   }
 
-  public function addButton($tipe, $class_parent, $id)
+  public function addButton($tipe, $class_parent, $id, $point)
   {
     if ($tipe == "submit") {
       return "
-          <button class='button positive' id='$id'>
-          <img src='/files/library/css/blueprint/plugins/link-icons/icons/im.png' alt=''> Register
+          <button onclick='return false'  class='button positive' id='$id'>
+          <img src='/files/library/css/blueprint/plugins/link-icons/icons/im.png' alt=''> $point
           </button>
 
         ";
@@ -116,6 +122,121 @@ class Lib_ui
         </div>
       
       ";
+  }
+
+
+  public function jq_init($isi)
+  {
+    return "
+      <script>
+        $(document).ready(
+            function()
+            {
+              $isi
+             }
+          );
+      </script>
+      ";
+  }
+
+  public function jq_click($element, $isi)
+  {
+    return "
+        $('#$element').click(
+            function()
+            {
+              $isi
+            }
+          );
+      ";
+  }
+
+  public function jq_valid($element1, $element2, $operator, $isi)
+  {
+    return "
+         if ($('#$element1').val() $operator $element2) {
+           console.log('');
+          }
+          else {
+            $isi
+          }
+      ";
+  }
+
+  public function jq_ajax($target, $aksi, $indeks, $element, $isi)
+  {
+    return "
+        $element
+        $.ajax({
+          type:'POST',
+          url:'/$target/ajax',
+          data:'&action=$aksi' + '&$indeks=' + jsoni,
+          success:
+          function(data)
+          {
+            $isi
+          }
+        });
+      ";
+  }
+
+  public function jq_pack($isi)
+  {
+    return "
+      <div id='loader' style='display:none'>
+        <center>
+          <img src='/files/library/images/loading.gif'>
+          <br>
+          loading ...
+        </center>
+      </div>
+      <div id='success'>
+      </div>
+      <div id='envi'>
+        $isi
+      </div>
+      ";
+  }
+
+  public function jq_loader($isi)
+  {
+    return "
+    envi = document.getElementById('envi');
+    loader = document.getElementById('loader');
+    success = document.getElementById('success');
+    $(loader).show();
+    $(envi).slideUp();
+    $isi
+      ";
+  }
+  public function jq_unloader($pesan, $link, $isi)
+  {
+    return "
+        $(loader).hide();
+        $(success).html('' +
+          '<center>' + 
+            '<p>$pesan</P>' + 
+            '<p><a href=$link>Click here</a></P>' + 
+          '</center>' + '');
+      ";
+  }
+  public function jq_add_json($element)
+  {
+    array_push($this->element, $element);
+  }
+  public function jq_get_json()
+  {
+    $hek = "var Sting = new Array(";
+    $tos = array();
+    if ($this->element) {
+      foreach ($this->element as $kunci_element) {
+        $tos[] =  "new Array('" . $kunci_element. "', $('#$kunci_element').val())";
+      }
+      $hek .= implode($tos, ",");
+      $hek .= ");";
+      $hek .= "var jsoni = JSON.stringify(Sting);";
+    }
+    return $hek;
   }
 
 }

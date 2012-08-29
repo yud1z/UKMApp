@@ -7,6 +7,7 @@ $css .= $this->lib_ui->loadCss("blueprint/print.css","print");
 $css .= $this->lib_ui->loadCss("blueprint/plugins/fancy-type/screen.css","screen, projection");
 $js = "";
 $js .= $this->lib_ui->loadJs("jquery-1.8.0.min.js");
+$js .= $this->lib_ui->loadJs("json2.js");
 
 
 $menu_tah = array(
