@@ -24,16 +24,17 @@ class Lib_ui
     return " <link rel='stylesheet' href='/files/library/css/$file' type='text/css' media='$tipe'> ";
   }
   
-  public function addInput($tipe, $id, $class, $value, $size)
+  public function addInput($tipe, $id, $class, $value, $size, $label)
   {
           return "
         <input 
         type='". $tipe ."' 
         id='". $id ."' 
         name='". $id ."' 
-        class='". $class ."' 
+        class='". $class ." input-". $size ."' 
         value='". $value ."' 
-        size='". $size ."' 
+        size='' 
+        placeholder='". $label ."'
         >
         ";
   }
@@ -81,7 +82,7 @@ class Lib_ui
   {
     if ($tipe == "submit") {
       return "
-          <button onclick='return false'  class='button positive' id='$id'>
+          <button onclick='return false'  class='button btn btn-primary' id='$id'>
           <img src='/files/library/css/blueprint/plugins/link-icons/icons/im.png' alt=''> $point
           </button>
 

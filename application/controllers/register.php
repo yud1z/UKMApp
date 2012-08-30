@@ -26,7 +26,7 @@ class Register extends CI_Controller {
 
 
     $element = "";
-    $width = 20;
+    $width = "large";
     $isi      = "";
     $isi      = $this->lib_ui->jq_unloader("Thanks For Register", "/login", $isi);
     $this->lib_ui->jq_add_json("username");
@@ -46,42 +46,19 @@ class Register extends CI_Controller {
     $isi      = $this->lib_ui->jq_loader($isi);
     $isi      = $this->lib_ui->jq_click("submit_register", $isi);
     $element .= $this->lib_ui->jq_init($isi);
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("username", "Username :"),
-      $this->lib_ui->addInput("text", "username", "element", "", $width)
-    );
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("email", "Email :"),
-      $this->lib_ui->addInput("text", "email", "element", "", $width)
-    );
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("perusahaan", "Perusahaan :"),
-      $this->lib_ui->addInput("text", "perusahaan", "element", "", $width)
-    );
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("password", "Password :"),
-      $this->lib_ui->addInput("password", "password", "element", "", $width)
-    );
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("repassword", "rePassword :"),
-      $this->lib_ui->addInput("password", "repassword", "element", "", $width)
-    );
+    $element .= $this->lib_ui->addInput("text", "username", "element", "", $width, "Username :");
+    $element .= $this->lib_ui->addInput("text", "email", "element", "", $width, "Email :");
+    $element .= $this->lib_ui->addInput("text", "perusahaan", "element", "", $width, "Perusahaan :");
+    $element .= $this->lib_ui->addInput("password", "password", "element", "", $width, "Password :");
+    $element .= $this->lib_ui->addInput("password", "repassword", "element", "", $width, "rePassword :");
     $this->lib_captcha->setHeight(70);
     $this->lib_captcha->setwidth(150);
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("", "&nbsp;"),
-      $this->lib_captcha->showImage()
-    );
+    $element .= $this->lib_captcha->showImage();
 
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("captha_input", "Capctha :"),
-      $this->lib_ui->addInput("text", "captha_input", "element", "", $width)
-    );
+    $element .= $this->lib_ui->addInput("text", "captha_input", "element", "", $width, "Capctha :");
 
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("", "&nbsp;"),
-      $this->lib_ui->addButton("submit", "element", "submit_register", "Register")
-    );
+    $element .=$this->lib_ui->addButton("submit", "element", "submit_register", "Register");
+    $element .=$this->lib_ui->addButton("submit", "element", "clear", "clear");
 
     $element = $this->lib_ui->form($element, "/register/ajax", "post", "inline", "");
     $element = $this->lib_ui->addField("Register User", $element, "User_Registration", "tengah", "300px", "inline");

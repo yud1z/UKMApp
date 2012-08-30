@@ -24,7 +24,7 @@ class Login extends CI_Controller {
     $this->load->library('lib_ui');
 
     $element = "";
-    $width = 20;
+    $width = "large";
     $isi      = "";
     $data['isi'] = "";
 
@@ -40,20 +40,9 @@ class Login extends CI_Controller {
     $isi      = $this->lib_ui->jq_loader($isi);
     $isi      = $this->lib_ui->jq_click("submit_login", $isi);
     $element .= $this->lib_ui->jq_init($isi);
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("username", "Username :"),
-      $this->lib_ui->addInput("text", "username", "element", "", $width)
-    );
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("password", "Email :"),
-      $this->lib_ui->addInput("text", "password", "element", "", $width)
-    );
-
-    $element .= $this->lib_ui->add2Kolom(
-      $this->lib_ui->addLabel("", "&nbsp;"),
-      $this->lib_ui->addButton("submit", "element", "submit_login", "Login")
-    );
-
+    $element .= $this->lib_ui->addInput("text", "username", "element", "", $width, "Username :");
+    $element .= $this->lib_ui->addInput("text", "password", "element", "", $width, "Password :");
+    $element .= $this->lib_ui->addButton("submit", "element", "submit_login", "Login");
 
     $element = $this->lib_ui->form($element, "/register/ajax", "post", "inline", "");
     $element = $this->lib_ui->addField("Register User", $element, "User_Registration", "tengah", "300px", "inline");
