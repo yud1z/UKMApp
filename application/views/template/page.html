@@ -7,6 +7,7 @@
   [@||@_@|||4|]
   [@||@_@|||3|]
 
+<<<<<<< HEAD
   <div id='test' style='width: 50%; height: 100px; background: #EEE'>#test</div>
 
   <script type="text/javascript" charset="utf-8">
@@ -22,25 +23,54 @@ uki('Button[text^=uki]').bind('click', function() {
   </script>
 
 
+=======
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(
+          function()
+          {
+          if  (window.location.pathname)
+          {
+            url = window.location.pathname.split('/');
+            $('#' + url[1]).attr("class", "active");
+          }
+          $('.child_menu').mouseenter(
+              function()
+              {
+                $(this).addClass("active");
+                $('#' + url[1]).attr("class", "");
+              }
+            ).mouseleave(
+                function()
+                {
+                $(this).removeClass("active");
+                $('#' + url[1]).attr("class", "active");
+                }
+              );
+          }
+        );
+  </script>
+
+>>>>>>> 99ae84de9bab625967c798eb7f805d24896e4f56
 
   <body>
     <div class="container">
 
-      <div id="header" style="height:70px">
-        <br>
-        <a href="/"><h1 class="alt">UKM app</h1></a>
+      <div class="hero-unit"  style="height:40px;">
+        <h1 style="margin-top:-30px">UKMapp</h1>
+        <p>
+        Solusi untuk Ukm menengah
+        </p>
       </div>
       <div id="menu">
         [@||@_@|||2|]
       </div>
       <div id="content">
-        <hr>
         [@||@_@|||1|]
       </div>
-      <div class="footer">
+      <footer class="footer">
         <hr>
         <center><a href="http://yud1z.com">@yud1z</a> development</center>
-      </div>
+      </footer>
 
     </div>
     
