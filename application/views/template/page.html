@@ -7,6 +7,32 @@
   [@||@_@|||4|]
   [@||@_@|||3|]
 
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(
+          function()
+          {
+          if  (window.location.pathname)
+          {
+            url = window.location.pathname.split('/');
+            $('#' + url[1]).attr("class", "active");
+          }
+          $('.child_menu').mouseenter(
+              function()
+              {
+                $(this).addClass("active");
+                $('#' + url[1]).attr("class", "");
+              }
+            ).mouseleave(
+                function()
+                {
+                $(this).removeClass("active");
+                $('#' + url[1]).attr("class", "active");
+                }
+              );
+          }
+        );
+  </script>
+
 
   <body>
     <div class="container">

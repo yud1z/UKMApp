@@ -21,13 +21,15 @@ $menu_tah = array(
 
 $menu = "";
 
-$menu .= "<div class='navbar navbar-inverse'>";
+$menu .= "<div class='navbar'>";
 $menu .= "<div class='navbar-inner'>";
 $menu .= "<div class='container'>";
 $menu .= "<a class='brand' href='/'>Home</a>";
 $menu .= "<ul class='nav' >";
 foreach ($menu_tah as $kunci_menu => $isi_menu) {
-  $menu .= "<li class='child_menu' >";
+  $url = explode("/", $isi_menu);
+  $url = $url[1];
+  $menu .= "<li class='child_menu' id='". $url ."' >";
   $menu .= "<a href='$isi_menu'>";
   $menu .= $kunci_menu;
   $menu .= "</a>";
