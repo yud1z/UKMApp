@@ -7,6 +7,21 @@
   [@||@_@|||4|]
   [@||@_@|||3|]
 
+  <div id='test' style='width: 50%; height: 100px; background: #EEE'>#test</div>
+
+  <script type="text/javascript" charset="utf-8">
+    uki({
+    view: 'Button',
+    rect: '200 40 200 24',
+    text: 'keren banget'
+}).attachTo( document.getElementById('test'), '600 100' );
+ 
+uki('Button[text^=uki]').bind('click', function() {
+    alert('Hello world!');
+});
+  </script>
+
+
 
   <body>
     <div class="container">

@@ -8,6 +8,7 @@ $css .= $this->lib_ui->loadCss("blueprint/plugins/fancy-type/screen.css","screen
 $js = "";
 $js .= $this->lib_ui->loadJs("jquery-1.8.0.min.js");
 $js .= $this->lib_ui->loadJs("json2.js");
+$js .= $this->lib_ui->loadJs("uki.js");
 
 
 $menu_tah = array(
