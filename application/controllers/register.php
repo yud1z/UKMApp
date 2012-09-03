@@ -27,25 +27,6 @@ class Register extends CI_Controller {
 
     $element = "";
     $width = "large";
-    $isi      = "";
-    $isi      = $this->lib_ui->jq_unloader("Thanks For Register", "/login", $isi);
-    $this->lib_ui->jq_add_json("username");
-    $this->lib_ui->jq_add_json("email");
-    $this->lib_ui->jq_add_json("perusahaan");
-    $this->lib_ui->jq_add_json("password");
-    $this->lib_ui->jq_add_json("captha_input");
-    $param    = $this->lib_ui->jq_get_json();
-    $isi      = $this->lib_ui->jq_ajax("register", "kirim_register", "kirim_info", $param, $isi);
-    $isi      = $this->lib_ui->jq_valid("username", "''", "==", $isi);
-    $isi      = $this->lib_ui->jq_valid("email", "''", "==", $isi);
-    $isi      = $this->lib_ui->jq_valid("perusahaan", "''", "==", $isi);
-    $isi      = $this->lib_ui->jq_valid("password", "$('#repassword').val()", "!=", $isi);
-    $isi      = $this->lib_ui->jq_valid("password", "''", "==", $isi);
-    $isi      = $this->lib_ui->jq_valid("repassword", "''", "==", $isi);
-    $isi      = $this->lib_ui->jq_valid("captha_input", "''", "==", $isi);
-    $isi      = $this->lib_ui->jq_loader($isi);
-    $isi      = $this->lib_ui->jq_click("submit_register", $isi);
-    $element .= $this->lib_ui->jq_init($isi);
     $element .= $this->lib_ui->addInput("text", "username", "element", "", $width, "Username :");
     $element .= $this->lib_ui->addInput("text", "email", "element", "", $width, "Email :");
     $element .= $this->lib_ui->addInput("text", "perusahaan", "element", "", $width, "Perusahaan :");
